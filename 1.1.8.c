@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int main() {
+    int m, n, r, p;
+
+    scanf("%d %d", &m, &n);
+
+    int A[m][n];
+
+    // Read first matrix
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    // Read dimensions of second matrix
+    scanf("%d %d", &r, &p);
+
+    // Check if multiplication is possible
+    if (n != r) {
+        printf("Invalid input");
+        return 0;
+    }
+
+    int B[r][p];
+
+    // Read second matrix
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < p; j++) {
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    // Multiply matrices
+    int C[m][p];
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < p; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    // Print result
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < p; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
